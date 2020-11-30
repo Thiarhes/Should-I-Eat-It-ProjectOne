@@ -47,11 +47,51 @@ window.onload = () => {
   }
   const background = new Background("../img/backgroundCanvas.jpg");
 
+  class Eater {
+    constructor(x, y) {
+      this.img = new Image();
+      this.img.src = "../img/mouth.jpg";
+      this.x = x;
+      this.y = y;
+      this.speed = 0;
+      this.width = 100;
+      this.height = 60;
+    }
+
+    draw() {
+      ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
+    }
+    moveLeft() {
+      if (this.x > 70) {
+        this.x -= 10;
+      }
+    }
+    moveRight() {
+      if (this.x < 383) {
+        this.x += 10;
+      }
+    }
+    top() {
+      return this.y;
+    }
+    bottom() {
+      return this.y + this.height;
+    }
+    left() {
+      return this.x;
+    }
+    right() {
+      return this.x + this.width;
+    }
+  }
+  const eater = new Eater(360, 500);
+
   function updateGameArea() {
     myGameArea.clear();
     background.draw();
-    ctx.drawImage(mouthTest, 300, 300, 100, 50);
+    eater.draw();
+    // ctx.drawImage(mouthTest, 300, 300, 100, 50);
   }
-  const mouthTest = new Image();
-  mouthTest.src = "../img/mouth.jpg";
+  // const mouthTest = new Image();
+  // mouthTest.src = "../img/mouth.jpg";
 };
