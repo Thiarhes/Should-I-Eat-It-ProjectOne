@@ -8,7 +8,7 @@ window.onload = () => {
   };
 
   function startGame() {
-    ctx.drawImage(backgroundImg, 0, 0, 800, 700);
+    ctx.drawImage(backgroundImg, 0, 0, 800, 650);
     myGameArea.start();
   }
 
@@ -42,7 +42,7 @@ window.onload = () => {
     }
 
     draw() {
-      ctx.drawImage(this.img, this.x, this.y, 800, 700);
+      ctx.drawImage(this.img, this.x, this.y, 800, 650);
     }
   }
   const background = new Background("../img/backgroundCanvas.jpg");
