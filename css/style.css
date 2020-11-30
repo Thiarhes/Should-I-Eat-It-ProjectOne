@@ -1,56 +1,61 @@
 .content {
-    display: flex;
-    justify-content: space-between;
-    width: 90%;
-    margin-left: 20px;
-    margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  width: 95%;
+  margin-left: 20px;
+  margin-top: 10px;
 }
 
 .panel-left {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    margin-right: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin-right: 40px;
 }
 
 .panel-left h1 {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    color: rgb(241, 23, 23);
-    font-size: 5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  color: rgb(241, 23, 23);
+  font-size: 4rem;
+}
+
+.panel-left h1 span {
+  margin-bottom: 30px;
 }
 
 .panel-left button {
-font-size: 2.5rem;
-color:  #fff;
-font-weight: 900;
-text-transform: uppercase;
-background-color: #111;
-border-radius: 2px;
-border: none;
-outline: none;
-box-shadow: 5px 10px 8px #888888;
+  font-size: 2.5rem;
+  padding: 2%;
+  color: #fff;
+  font-weight: 900;
+  text-transform: uppercase;
+  background-color: #111;
+  border-radius: 2px;
+  border: none;
+  outline: none;
+  cursor: url("../img/mouth.gif"), pointer;
 }
 
 .panel-left button:hover {
-    background-color: #fff;
-    color: rgb(241, 23, 23);
+  background-color: #fff;
+  color: rgb(241, 23, 23);
 }
 
 .panel-left p {
-    font-size: 1.8rem;
-    font-weight: 700;
+  font-size: 1.8rem;
+  font-weight: 700;
 }
 
 .panel-left i {
-    font-size: 2rem;
-    margin-left: 30px;
+  font-size: 2rem;
+  margin-left: 30px;
 }
 
 .panel-left img {
-    width: 60px;
-    height: 55px;
-    margin-bottom: -10px;
+  width: 60px;
+  height: 55px;
+  margin-bottom: -10px;
 }
