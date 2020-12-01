@@ -50,25 +50,25 @@ window.onload = () => {
   class Eater {
     constructor(x, y) {
       this.img = new Image();
-      this.img.src = "../img/mouth.jpg";
+      this.img.src = "../img/eater.jpg";
       this.x = x;
       this.y = y;
       this.speed = 0;
       this.width = 100;
-      this.height = 60;
+      this.height = 160;
     }
 
     draw() {
       ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
     }
     moveLeft() {
-      if (this.x > 70) {
-        this.x -= 10;
+      if (this.x > 10) {
+        this.x -= 30;
       }
     }
     moveRight() {
-      if (this.x < 383) {
-        this.x += 10;
+      if (this.x < 690) {
+        this.x += 30;
       }
     }
     top() {
@@ -83,15 +83,40 @@ window.onload = () => {
     right() {
       return this.x + this.width;
     }
+    checkIfPick() {
+      return !(
+      this.top() > obst.bottom() ||
+      this.bottom() < obst.top() ||
+      this.left() > obst.right() ||
+      this.right() < obst.left()
+      );
+    }
+    checkItem() {}
   }
-  const eater = new Eater(360, 500);
+  const eater = new Eater(360, 490);
+
+  // class Food {
+    // constructor(x, y) {
+      // this.x = x;
+      // this.y = y;
+      // this.width = width;
+      // this.height = height;
+    // }
+  // }
+// 
+  // const food = new Food()
 
   function updateGameArea() {
     myGameArea.clear();
     background.draw();
     eater.draw();
-    // ctx.drawImage(mouthTest, 300, 300, 100, 50);
   }
-  // const mouthTest = new Image();
-  // mouthTest.src = "../img/mouth.jpg";
+
+  document.addEventListener('keydown', (e) => {
+    if (e.keyCode === 37) {
+      eater.moveLeft();
+    } else if (e.keyCode === 39) {
+      eater.moveRight();
+    }
+  }) 
 };
