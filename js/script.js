@@ -25,9 +25,12 @@ window.onload = () => {
     clear: function () {
       ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
     },
-
+    fallDownFaster() {
+      if (this.frames % 240 === 0) {
+        this.speed += 1;
+      }
+    },
     score: function () {},
-
     stop: function () {
       clearInterval(this.setInterval);
     },
@@ -85,38 +88,100 @@ window.onload = () => {
     }
     checkIfPick() {
       return !(
-      this.top() > obst.bottom() ||
-      this.bottom() < obst.top() ||
-      this.left() > obst.right() ||
-      this.right() < obst.left()
+        this.top() > obst.bottom() ||
+        this.bottom() < obst.top() ||
+        this.left() > obst.right() ||
+        this.right() < obst.left()
       );
     }
     checkItem() {}
   }
   const eater = new Eater(360, 490);
 
-  // class Food {
-    // constructor(x, y) {
-      // this.x = x;
-      // this.y = y;
-      // this.width = width;
-      // this.height = height;
-    // }
-  // }
-// 
-  // const food = new Food()
+  class Food {
+    constructor(image, x, good, bad) {
+      this.x = x;
+      this.y = 0;
+      this.width = width;
+      this.height = height;
+    }
+    draw() {}
+    fallDown() {
+      this.y += myGameArea.speed;
+    }
+    top() {
+      return this.y;
+    }
+    bottom() {
+      return this.y + this.height;
+    }
+    left() {
+      return this.x;
+    }
+    right() {
+      return this.x + this.width;
+    }
+  }
+
+  function updateFood() {
+    myGameArea.frames += 1;
+    fallDownFaster();
+    for (let i = 0; i < myGameArea.items.length; i += 1) {
+      myGameArea.items[i].fallDown();
+      myGameArea.items[i].draw();
+    }
+
+    if (myGameArea.frames % 120 === 0) {
+      myGameArea.points += 1;
+      const aviao = '../img/aviao.jpg';
+      const banana = '../img/banana.jpg';
+      const batata = '../img/batata.jpg';
+      const bola = '../img/bola.jpg';
+      const celular = '../img/celular.jpg';
+      const ferramenta = '../img/ferramenta.jpg';
+      const melancia = '../img/melancia.jpg';
+      const pizza = '../img/pizza.jpg';
+      const suco = '../img/suco.jpg';
+      const tenis = '../img/tenis.jpg';
+      let width;
+      let height;
+      if (
+        aviao ||
+        ferramenta ||
+        melancia ||
+        tenis ||
+        pizza
+      ) {
+        width = 65;
+        height = 45;
+      } else if (
+        banana ||
+        batata ||
+        celular ||
+        suco ||
+        bola
+      ) {
+        width = 45;
+        height = 60;
+      }
+      let good = [banana, batata, melancia, pizza, suco];
+      let bad = [aviao, bola, celular, ferramenta, tenis];
+      myGameArea.items.push(new Food(good, bad));
+    }
+  }
 
   function updateGameArea() {
     myGameArea.clear();
     background.draw();
     eater.draw();
+    updateFood();
   }
 
-  document.addEventListener('keydown', (e) => {
+  document.addEventListener("keydown", (e) => {
     if (e.keyCode === 37) {
       eater.moveLeft();
     } else if (e.keyCode === 39) {
       eater.moveRight();
     }
-  }) 
+  });
 };
