@@ -1,6 +1,6 @@
 const ctx = document.getElementById("canvas").getContext("2d");
 const backgroundImg = new Image();
-backgroundImg.src = "../img/backgroundCanvas.jpg";
+backgroundImg.src = "../img/background.jpg";
 
 window.onload = () => {
   document.getElementById("start-button").onclick = () => {
@@ -16,7 +16,8 @@ window.onload = () => {
     canvas: document.getElementById("canvas"),
     points: 0,
     frames: 0,
-    speed: 0,
+    speed: 1,
+    creationTime: 120,
     items: [],
     start: function () {
       this.interval = setInterval(updateGameArea, 20);
@@ -28,6 +29,9 @@ window.onload = () => {
     fallDownFaster() {
       if (this.frames % 240 === 0) {
         this.speed += 1;
+        if (this.creationTime > 20) {
+          this.creationTime -= 6;
+        }
       }
     },
     score: function () {},
@@ -48,16 +52,16 @@ window.onload = () => {
       ctx.drawImage(this.img, this.x, this.y, 800, 650);
     }
   }
-  const background = new Background("../img/backgroundCanvas.jpg");
+  const background = new Background("../img/background.jpg");
 
   class Eater {
     constructor(x, y) {
       this.img = new Image();
-      this.img.src = "../img/eater.jpg";
+      this.img.src = "../img/eater.png";
       this.x = x;
       this.y = y;
       this.speed = 0;
-      this.width = 100;
+      this.width = 200;
       this.height = 160;
     }
 
@@ -66,16 +70,16 @@ window.onload = () => {
     }
     moveLeft() {
       if (this.x > 10) {
-        this.x -= 30;
+        this.x -= 80;
       }
     }
     moveRight() {
-      if (this.x < 690) {
-        this.x += 30;
+      if (this.x < 600) {
+        this.x += 79;
       }
     }
     top() {
-      return this.y;
+      return this.y + this.height / 3;
     }
     bottom() {
       return this.y + this.height;
@@ -99,13 +103,18 @@ window.onload = () => {
   const eater = new Eater(360, 490);
 
   class Food {
-    constructor(image, x, good, bad) {
+    constructor(source, x, good) {
+      this.image = new Image();
+      this.image.src = source;
       this.x = x;
       this.y = 0;
-      this.width = width;
-      this.height = height;
+      this.good = good;
+      this.width = 65;
+      this.height = 62;
     }
-    draw() {}
+    draw() {
+      ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
+    }
     fallDown() {
       this.y += myGameArea.speed;
     }
@@ -125,48 +134,57 @@ window.onload = () => {
 
   function updateFood() {
     myGameArea.frames += 1;
-    fallDownFaster();
+    myGameArea.fallDownFaster();
     for (let i = 0; i < myGameArea.items.length; i += 1) {
       myGameArea.items[i].fallDown();
       myGameArea.items[i].draw();
     }
 
-    if (myGameArea.frames % 120 === 0) {
+    if (myGameArea.frames % myGameArea.creationTime === 0) {
       myGameArea.points += 1;
-      const aviao = '../img/aviao.jpg';
-      const banana = '../img/banana.jpg';
-      const batata = '../img/batata.jpg';
-      const bola = '../img/bola.jpg';
-      const celular = '../img/celular.jpg';
-      const ferramenta = '../img/ferramenta.jpg';
-      const melancia = '../img/melancia.jpg';
-      const pizza = '../img/pizza.jpg';
-      const suco = '../img/suco.jpg';
-      const tenis = '../img/tenis.jpg';
-      let width;
-      let height;
+      // seleção aleatoria do alimento
+      const airplane = "../img/airplane.png";
+      const banana = "../img/banana.png";
+      const fries = "../img/fries.png";
+      const ball = "../img/ball.png";
+      const cell = "../img/cell.png";
+      const tool = "../img/tool.png";
+      const watermelon = "../img/watermelon.png";
+      const pizza = "../img/pizza.png";
+      const juice = "../img/juice.png";
+      const sneakers = "../img/sneakers.png";
+      const foods = [
+        airplane,
+        banana,
+        fries,
+        ball,
+        cell,
+        tool,
+        watermelon,
+        pizza,
+        juice,
+        sneakers,
+      ];
+      const randomNumber = Math.floor(Math.random() * foods.length);
+      const randomFood = foods[randomNumber];
+
+      // verificando se o alimento é bom ou ruim
+      let good = false;
       if (
-        aviao ||
-        ferramenta ||
-        melancia ||
-        tenis ||
-        pizza
+        randomFood === banana ||
+        randomFood === fries ||
+        randomFood === watermelon ||
+        randomFood === pizza ||
+        randomFood === juice
       ) {
-        width = 65;
-        height = 45;
-      } else if (
-        banana ||
-        batata ||
-        celular ||
-        suco ||
-        bola
-      ) {
-        width = 45;
-        height = 60;
+        good = true;
       }
-      let good = [banana, batata, melancia, pizza, suco];
-      let bad = [aviao, bola, celular, ferramenta, tenis];
-      myGameArea.items.push(new Food(good, bad));
+
+      // posição aleatória da criação do alimento
+      const position = Math.floor(Math.random() * (800 - 65));
+
+      // instanciando a classe Food
+      myGameArea.items.push(new Food(randomFood, position, good));
     }
   }
 
