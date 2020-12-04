@@ -34,7 +34,11 @@ window.onload = () => {
         }
       }
     },
-    score: function () {},
+    score: function () {
+      ctx.fillStyle = 'black';
+      ctx.font = '18px serif';
+      ctx.fillText(`SCORE: ${this.points}, 10, 20`);
+    },
     stop: function () {
       clearInterval(this.setInterval);
     },
@@ -79,7 +83,7 @@ window.onload = () => {
       }
     }
     top() {
-      return this.y + this.height / 3;
+      return this.y + this.height / 4;
     }
     bottom() {
       return this.y + this.height;
@@ -90,15 +94,16 @@ window.onload = () => {
     right() {
       return this.x + this.width;
     }
-    checkIfPick() {
+    checkIfPick(food) {
       return !(
-        this.top() > obst.bottom() ||
-        this.bottom() < obst.top() ||
-        this.left() > obst.right() ||
-        this.right() < obst.left()
+        this.top() > food.bottom() ||
+        this.bottom() < food.top() ||
+        this.left() > food.right() ||
+        this.right() < food.left()
       );
     }
-    checkItem() {}
+    checkItem() {
+    }
   }
   const eater = new Eater(360, 490);
 
@@ -141,7 +146,6 @@ window.onload = () => {
     }
 
     if (myGameArea.frames % myGameArea.creationTime === 0) {
-      myGameArea.points += 1;
       // seleção aleatoria do alimento
       const airplane = "../img/airplane.png";
       const banana = "../img/banana.png";
@@ -188,11 +192,50 @@ window.onload = () => {
     }
   }
 
+  function checkGameOver() {
+    const airplane = "../img/airplane.png";
+    const banana = "../img/banana.png";
+    const fries = "../img/fries.png";
+    const ball = "../img/ball.png";
+    const cell = "../img/cell.png";
+    const tool = "../img/tool.png";
+    const watermelon = "../img/watermelon.png";
+    const pizza = "../img/pizza.png";
+    const juice = "../img/juice.png";
+    const sneakers = "../img/sneakers.png";
+    const foods = [
+      airplane,
+      banana,
+      fries,
+      ball,
+      cell,
+      tool,
+      watermelon,
+      pizza,
+      juice,
+      sneakers,
+    ];
+    const randomNumber = Math.floor(Math.random() * foods.length);
+    const randomFood = foods[randomNumber];
+    // verificando se o alimento é bom ou ruim
+    let good = false;
+    if (
+      randomFood === banana ||
+      randomFood === fries ||
+      randomFood === watermelon ||
+      randomFood === pizza ||
+      randomFood === juice
+    ) {
+      good = true;
+    }
+  }
+
   function updateGameArea() {
     myGameArea.clear();
     background.draw();
     eater.draw();
     updateFood();
+    checkGameOver();
   }
 
   document.addEventListener("keydown", (e) => {
