@@ -19,7 +19,7 @@ window.onload = () => {
     speed: 1,
     creationTime: 120,
     items: [],
-    goodItems: 0,
+    lives: 3,
     start: function () {
       this.interval = setInterval(updateGameArea, 20);
     },
@@ -43,7 +43,7 @@ window.onload = () => {
     foodDown: function () {
       ctx.fillStyle = "red";
       ctx.font = "18px serif";
-      ctx.fillText(`GOOD ITEMS DOWN: ${this.goodItems}`, 600, 20);
+      ctx.fillText(`LIVES: ${this.lives}`, 700, 20);
     },
     stop: function () {
       clearInterval(this.setInterval);
@@ -207,29 +207,27 @@ window.onload = () => {
           } else if (myGameArea.points > 150) {
             myGameArea.points += 12.5;
           } 
-          myGameArea.items[i].good -= 1;
-          function itemsRemove(items, good) { 
-    
-            return items.filter(function(ele){ 
-                return ele !== good; 
-            });
-        }
-        itemsRemove();
+            
           // remover o item do array pra ele sumir haha
         }  else {
           // codigo aqui
         }
+        myGameArea.items.splice(i, 1);
       }
     }
   }
 
   function checkDownItems() {
-    const canvasLimit = background.this.y;
-    background.this.y = 650;
-    if (Food.bottom() > canvasLimit) {
-
+    const canvasYLimit = myGameArea.canvas.height;
+    if (Food.bottom() > canvasYLimit) {
+    myGameArea.lives -= 1;
     }
+  }
 
+  function checkGameOver() {
+    if (myGameArea.lives < 0) {
+      myGameArea.stop();
+    }
   }
 
   function updateGameArea() {
@@ -240,6 +238,8 @@ window.onload = () => {
     checkIfPickItem();
     myGameArea.score();
     myGameArea.foodDown();
+    checkDownItems();
+    checkGameOver();
   }
 
   document.addEventListener("keydown", (e) => {
