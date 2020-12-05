@@ -19,7 +19,7 @@ window.onload = () => {
     speed: 1,
     creationTime: 120,
     items: [],
-    lives: 3,
+    lives: 5,
     start: function () {
       this.interval = setInterval(updateGameArea, 20);
     },
@@ -40,13 +40,26 @@ window.onload = () => {
       ctx.font = "18px serif";
       ctx.fillText(`SCORE: ${this.points}`, 10, 20);
     },
-    foodDown: function () {
+    livesDown: function () {
       ctx.fillStyle = "red";
       ctx.font = "18px serif";
       ctx.fillText(`LIVES: ${this.lives}`, 700, 20);
     },
     stop: function () {
-      clearInterval(this.setInterval);
+      clearInterval(this.interval);
+      setTimeout(this.gameOver, 1000);
+    },
+    gameOver: function () {
+      ctx.font = "80px Verdana";
+      // Create gradient
+      const gradient = ctx.createLinearGradient(0, 0, this.canvas.width, 0);
+      gradient.addColorStop("0.6", "magenta");
+      gradient.addColorStop("0.2", "blue");
+      gradient.addColorStop("0.7", "red");
+      gradient.addColorStop("0.4", "black");
+      // Fill with gradient
+      ctx.fillStyle = gradient;
+      ctx.fillText("GAME OVER!", 160, 300);
     },
   };
 
@@ -199,18 +212,15 @@ window.onload = () => {
   function checkIfPickItem() {
     for (let i = 0; i < myGameArea.items.length; i += 1) {
       if (eater.checkIfPick(myGameArea.items[i])) {
-        
         if (myGameArea.items[i].good) {
           myGameArea.points += 7.5;
           if (myGameArea.points > 50) {
             myGameArea.points += 10;
           } else if (myGameArea.points > 150) {
             myGameArea.points += 12.5;
-          } 
-            
-          // remover o item do array pra ele sumir haha
-        }  else {
-          // codigo aqui
+          }
+        } else {
+          myGameArea.lives -= 1;
         }
         myGameArea.items.splice(i, 1);
       }
@@ -219,13 +229,19 @@ window.onload = () => {
 
   function checkDownItems() {
     const canvasYLimit = myGameArea.canvas.height;
-    if (Food.bottom() > canvasYLimit) {
-    myGameArea.lives -= 1;
+    for (let i = 0; i < myGameArea.items.length; i += 1) {
+      if (
+        myGameArea.items[i].good &&
+        myGameArea.items[i].bottom() > canvasYLimit
+      ) {
+        myGameArea.lives -= 1;
+        myGameArea.items.splice(i, 1);
+      }
     }
   }
 
   function checkGameOver() {
-    if (myGameArea.lives < 0) {
+    if (myGameArea.lives <= 0) {
       myGameArea.stop();
     }
   }
@@ -237,9 +253,10 @@ window.onload = () => {
     updateFood();
     checkIfPickItem();
     myGameArea.score();
-    myGameArea.foodDown();
+    myGameArea.livesDown();
     checkDownItems();
     checkGameOver();
+    //myGameArea.gameOver();
   }
 
   document.addEventListener("keydown", (e) => {
