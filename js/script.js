@@ -19,6 +19,7 @@ window.onload = () => {
     speed: 1,
     creationTime: 120,
     items: [],
+    goodItems: 0,
     start: function () {
       this.interval = setInterval(updateGameArea, 20);
     },
@@ -35,9 +36,14 @@ window.onload = () => {
       }
     },
     score: function () {
-      ctx.fillStyle = 'black';
-      ctx.font = '18px serif';
-      ctx.fillText(`SCORE: ${this.points}, 10, 20`);
+      ctx.fillStyle = "black";
+      ctx.font = "18px serif";
+      ctx.fillText(`SCORE: ${this.points}`, 10, 20);
+    },
+    foodDown: function () {
+      ctx.fillStyle = "red";
+      ctx.font = "18px serif";
+      ctx.fillText(`GOOD ITEMS DOWN: ${this.goodItems}`, 600, 20);
     },
     stop: function () {
       clearInterval(this.setInterval);
@@ -101,8 +107,6 @@ window.onload = () => {
         this.left() > food.right() ||
         this.right() < food.left()
       );
-    }
-    checkItem() {
     }
   }
   const eater = new Eater(360, 490);
@@ -192,42 +196,40 @@ window.onload = () => {
     }
   }
 
-  function checkGameOver() {
-    const airplane = "../img/airplane.png";
-    const banana = "../img/banana.png";
-    const fries = "../img/fries.png";
-    const ball = "../img/ball.png";
-    const cell = "../img/cell.png";
-    const tool = "../img/tool.png";
-    const watermelon = "../img/watermelon.png";
-    const pizza = "../img/pizza.png";
-    const juice = "../img/juice.png";
-    const sneakers = "../img/sneakers.png";
-    const foods = [
-      airplane,
-      banana,
-      fries,
-      ball,
-      cell,
-      tool,
-      watermelon,
-      pizza,
-      juice,
-      sneakers,
-    ];
-    const randomNumber = Math.floor(Math.random() * foods.length);
-    const randomFood = foods[randomNumber];
-    // verificando se o alimento é bom ou ruim
-    let good = false;
-    if (
-      randomFood === banana ||
-      randomFood === fries ||
-      randomFood === watermelon ||
-      randomFood === pizza ||
-      randomFood === juice
-    ) {
-      good = true;
+  function checkIfPickItem() {
+    for (let i = 0; i < myGameArea.items.length; i += 1) {
+      if (eater.checkIfPick(myGameArea.items[i])) {
+        
+        if (myGameArea.items[i].good) {
+          myGameArea.points += 7.5;
+          if (myGameArea.points > 50) {
+            myGameArea.points += 10;
+          } else if (myGameArea.points > 150) {
+            myGameArea.points += 12.5;
+          } 
+          myGameArea.items[i].good -= 1;
+          function itemsRemove(items, good) { 
+    
+            return items.filter(function(ele){ 
+                return ele !== good; 
+            });
+        }
+        itemsRemove();
+          // remover o item do array pra ele sumir haha
+        }  else {
+          // codigo aqui
+        }
+      }
     }
+  }
+
+  function checkDownItems() {
+    const canvasLimit = background.this.y;
+    background.this.y = 650;
+    if (Food.bottom() > canvasLimit) {
+
+    }
+
   }
 
   function updateGameArea() {
@@ -235,7 +237,9 @@ window.onload = () => {
     background.draw();
     eater.draw();
     updateFood();
-    checkGameOver();
+    checkIfPickItem();
+    myGameArea.score();
+    myGameArea.foodDown();
   }
 
   document.addEventListener("keydown", (e) => {
