@@ -22,6 +22,13 @@
   font-size: 4rem;
 }
 
+.panel-left h1 img {
+  width: 125px;
+  height: 110px;
+  margin-top: -20px;
+  margin-bottom: -50px;
+}
+
 .panel-left h1 span {
   margin-bottom: 30px;
   text-shadow: 1px 1px 2px black;
@@ -30,7 +37,7 @@
 .panel-left button {
   font-size: 2rem;
   padding: 2%;
-  width: 96%;
+  width: 97%;
   color: #fff;
   font-weight: 900;
   text-transform: uppercase;
@@ -47,9 +54,30 @@
   text-shadow: 1px 1px 2px black;
 }
 
+.panel-left .message {
+  font-size: 2rem;
+  text-align: center;
+  background-image: linear-gradient(45deg, #1c0b69, #f31151, rgb(64, 13, 184), rgb(22, 17, 17));
+  -webkit-background-clip: text;
+  background-clip: text;
+  background-size: 100%;
+  -webkit-text-fill-color: transparent;
+  background-color: #f3ec78;
+  text-transform: uppercase;
+}
+
 .panel-left p {
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   font-weight: 700;
+  letter-spacing: 0.8px;
+}
+
+hr {
+  width: 50%;
+  color: #111;
+  background-color: #111;
+  height: 3px;
+  border-radius: 50%;
 }
 
 .panel-left i {
@@ -59,6 +87,10 @@
 
 .panel-left img {
   width: 60px;
-  height: 55px;
+  height: 50px;
   margin-bottom: -10px;
+}
+
+.panel-left .hidden {
+  display: none;
 }

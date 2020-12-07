@@ -3,13 +3,27 @@ const backgroundImg = new Image();
 backgroundImg.src = "../img/background.jpg";
 
 window.onload = () => {
-  document.getElementById("start-button").onclick = () => {
+  document.querySelector(".start-button").onclick = () => {
     startGame();
   };
 
   function startGame() {
     ctx.drawImage(backgroundImg, 0, 0, 800, 650);
     myGameArea.start();
+  }
+
+  function hiddenButton() {
+    const magic = document.querySelector(".start-button");
+    magic.classList.add("hidden");
+  }
+
+  function showMessage() {
+    const show = document.querySelector(".message");
+    const hr = document.querySelector(".hr");
+    const hrAgain = document.querySelector(".again");
+    hrAgain.classList.remove("hidden");
+    hr.classList.remove("hidden");
+    show.classList.remove("hidden");
   }
 
   const myGameArea = {
@@ -93,12 +107,12 @@ window.onload = () => {
     }
     moveLeft() {
       if (this.x > 10) {
-        this.x -= 80;
+        this.x -= 60;
       }
     }
     moveRight() {
       if (this.x < 600) {
-        this.x += 79;
+        this.x += 60;
       }
     }
     top() {
@@ -256,8 +270,12 @@ window.onload = () => {
     myGameArea.livesDown();
     checkDownItems();
     checkGameOver();
-    //myGameArea.gameOver();
   }
+
+  document.querySelector(".start-button").addEventListener("click", () => {
+    hiddenButton();
+    showMessage();
+  });
 
   document.addEventListener("keydown", (e) => {
     if (e.keyCode === 37) {

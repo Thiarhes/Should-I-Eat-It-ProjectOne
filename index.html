@@ -1,41 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./css/normalize.css">
-    <script src="https://kit.fontawesome.com/9accb34635.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./css/normalize.css" />
+    <script
+      src="https://kit.fontawesome.com/9accb34635.js"
+      crossorigin="anonymous"
+    ></script>
     <link rel="stylesheet" href="./css/style.css" />
     <title>Project One</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <div class="conteiner">
-        <div class="content">
-            <div class="panel-left">
-                <h1>
-                    <span>Shoud I Eat It?</span>
-                    <img src="./img/thinking.png" alt="">
-                </h1>
-                
-                <button id="start-button">Let's get some fun!</button>
-                <p>
-                    You should move the eater, left or right using
-                    <i class="fas fa-long-arrow-alt-left"></i>
-                    <i class="fas fa-long-arrow-alt-right"></i>
-                </p>
-                <p>
-                    Be careful, don't eat something you will get indigestion!
-                    <img src="./img/emoji.png" alt="">
-                </p>
-            </div>
-            <div class="panel-right">
-                <canvas id="canvas" width="800" height="650"></canvas>
-            </div>
+      <div class="content">
+        <div class="panel-left">
+          <h1>
+            <span>Shoud I Eat It?</span>
+            <img src="./img/delicious.png" alt="" />
+          </h1>
+          <hr class="hr hidden" />
+          <div class="dynamic">
+            <button class="start-button">Let's get some fun!</button>
+            <p class="message hidden">
+              Your game has started!
+              <img src="./img/started.png" alt="" />
+            </p>
+          </div>
+          <hr class="again hidden" />
+          <p>
+            You should move the eater, left or right using
+            <i class="fas fa-long-arrow-alt-left"></i>
+            <i class="fas fa-long-arrow-alt-right"></i>
+          </p>
+          
+          <p>
+            Be careful, don't eat something you will get indigestion!
+            <img src="./img/indigestion.png" alt="" />
+          </p>
         </div>
+        <div class="panel-right">
+          <canvas id="canvas" width="800" height="650"></canvas>
+        </div>
+      </div>
     </div>
     <script src="./js/script.js"></script>
-</body>
-
+  </body>
 </html>
