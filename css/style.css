@@ -9,8 +9,7 @@
 .panel-left {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
-  margin-right: 40px;
+  margin-right: 20px;
 }
 
 .panel-left h1 {
@@ -19,23 +18,22 @@
   align-items: center;
   text-align: center;
   color: rgb(241, 23, 23);
-  font-size: 4rem;
+  font-size: 3rem;
 }
 
 .panel-left h1 img {
   width: 125px;
   height: 110px;
-  margin-top: -20px;
-  margin-bottom: -50px;
+  margin-bottom: 30px;
 }
 
 .panel-left h1 span {
-  margin-bottom: 30px;
+  margin-bottom: 10px;
   text-shadow: 1px 1px 2px black;
 }
 
 .panel-left button {
-  font-size: 2rem;
+  font-size: 2.2rem;
   padding: 2%;
   width: 97%;
   color: #fff;
@@ -45,7 +43,9 @@
   border-radius: 2px;
   border: none;
   outline: none;
-  cursor: url("../img/mouth.gif"), pointer;
+  cursor: pointer;
+  margin-top: -30px;
+  margin-bottom: 50px;
 }
 
 .panel-left button:hover {
@@ -54,28 +54,16 @@
   text-shadow: 1px 1px 2px black;
 }
 
-.panel-left .message {
-  font-size: 2rem;
-  text-align: center;
-  background-image: linear-gradient(45deg, #1c0b69, #f31151, rgb(64, 13, 184), rgb(22, 17, 17));
-  -webkit-background-clip: text;
-  background-clip: text;
-  background-size: 100%;
-  -webkit-text-fill-color: transparent;
-  background-color: #f3ec78;
-  text-transform: uppercase;
-}
-
 .panel-left p {
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   font-weight: 700;
   letter-spacing: 0.8px;
 }
 
 hr {
   width: 50%;
-  color: #111;
-  background-color: #111;
+  color: rgb(46, 9, 9);
+  background-color: rgb(48, 10, 23);
   height: 3px;
   border-radius: 50%;
 }
@@ -87,8 +75,18 @@ hr {
 
 .panel-left img {
   width: 60px;
-  height: 50px;
+  height: 55px;
   margin-bottom: -10px;
+}
+
+.panel-left .indigestion {
+  width: 75px;
+  height: 55px;
+}
+
+.message img {
+  width: 350px;
+  height: 250px;
 }
 
 .panel-left .hidden {

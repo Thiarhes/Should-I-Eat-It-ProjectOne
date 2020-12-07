@@ -13,15 +13,15 @@ window.onload = () => {
   }
 
   function hiddenButton() {
-    const magic = document.querySelector(".start-button");
-    magic.classList.add("hidden");
+    const magicButton = document.querySelector(".start-button");
+    const instructions = document.querySelector('.instructions');
+    magicButton.classList.add("hidden");
+    instructions.classList.add('hidden');
   }
 
   function showMessage() {
     const show = document.querySelector(".message");
     const hr = document.querySelector(".hr");
-    const hrAgain = document.querySelector(".again");
-    hrAgain.classList.remove("hidden");
     hr.classList.remove("hidden");
     show.classList.remove("hidden");
   }
@@ -106,13 +106,13 @@ window.onload = () => {
       ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
     }
     moveLeft() {
-      if (this.x > 10) {
-        this.x -= 60;
+      if (this.x > 1) {
+        this.x -= 50;
       }
     }
     moveRight() {
-      if (this.x < 600) {
-        this.x += 60;
+      if (this.x < 610) {
+        this.x += 50;
       }
     }
     top() {
