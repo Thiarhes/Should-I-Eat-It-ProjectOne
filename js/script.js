@@ -1,5 +1,10 @@
 const ctx = document.getElementById("canvas").getContext("2d");
 const backgroundImg = new Image();
+
+let bestScore;
+data = parseInt(localStorage.getItem(`${bestScore}`));
+bestScore = isNaN(data)?0:data;
+
 backgroundImg.src = "../img/background.jpg";
 
 window.onload = () => {
@@ -11,14 +16,14 @@ window.onload = () => {
     ctx.drawImage(backgroundImg, 0, 0, 800, 650);
     myGameArea.start();
   }
-
+// função que esconde o botão e as instruções quando o player inicia o jogo
   function hiddenButton() {
     const magicButton = document.querySelector(".start-button");
-    const instructions = document.querySelector('.instructions');
+    const instructions = document.querySelector(".instructions");
     magicButton.classList.add("hidden");
-    instructions.classList.add('hidden');
+    instructions.classList.add("hidden");
   }
-
+// função que mostra uma "mensagem" imagem no lugar do botão e das instruções
   function showMessage() {
     const show = document.querySelector(".message");
     const hr = document.querySelector(".hr");
@@ -54,6 +59,11 @@ window.onload = () => {
       ctx.font = "18px serif";
       ctx.fillText(`SCORE: ${this.points}`, 10, 20);
     },
+    bestScore: function () {
+      ctx.fillStyle = 'green';
+      ctx.font = '18px monospace';
+      ctx.fillText(`BEST SCORE: ${bestScore}`, 150, 20);
+    },
     livesDown: function () {
       ctx.fillStyle = "red";
       ctx.font = "18px serif";
@@ -76,6 +86,13 @@ window.onload = () => {
       ctx.fillText("GAME OVER!", 160, 300);
     },
   };
+
+  function setBestScore() {
+    if (myGameArea.points > bestScore) {
+      myGameArea.points = bestScore;
+      localStorage.setItem(`${bestScore}`, myGameArea.points);
+    }
+  }
 
   class Background {
     constructor(source) {
@@ -267,9 +284,11 @@ window.onload = () => {
     updateFood();
     checkIfPickItem();
     myGameArea.score();
+    myGameArea.bestScore();
     myGameArea.livesDown();
     checkDownItems();
     checkGameOver();
+    setBestScore();
   }
 
   document.querySelector(".start-button").addEventListener("click", () => {
