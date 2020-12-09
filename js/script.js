@@ -10,6 +10,7 @@ backgroundImg.src = "../img/background.jpg";
 window.onload = () => {
   document.querySelector(".start-button").onclick = () => {
     startGame();
+    effects[4].play();
   };
 
   function startGame() {
@@ -72,6 +73,8 @@ window.onload = () => {
     stop: function () {
       clearInterval(this.interval);
       setTimeout(this.gameOver, 1000);
+      effects[3].play();
+      effects[4].pause();
     },
     gameOver: function () {
       ctx.font = "80px Verdana";
@@ -133,10 +136,10 @@ window.onload = () => {
       }
     }
     top() {
-      return this.y + this.height / 1.5;
+      return this.y + this.height / 4;
     }
     bottom() {
-      return this.y + this.height;
+      return this.y + this.height ;
     }
     left() {
       return this.x;
@@ -245,13 +248,17 @@ window.onload = () => {
       if (eater.checkIfPick(myGameArea.items[i])) {
         if (myGameArea.items[i].good) {
           myGameArea.points += 7.5;
+          effects[0].play();
           if (myGameArea.points > 50) {
             myGameArea.points += 10;
+            effects[0].play();
           } else if (myGameArea.points > 150) {
             myGameArea.points += 12.5;
+            effects[0].play();
           }
         } else {
           myGameArea.lives -= 1;
+          effects[1].play();
         }
         myGameArea.items.splice(i, 1);
       }
@@ -266,6 +273,7 @@ window.onload = () => {
         myGameArea.items[i].bottom() > canvasYLimit
       ) {
         myGameArea.lives -= 1;
+        effects[2].play();
         myGameArea.items.splice(i, 1);
       }
     }
