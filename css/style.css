@@ -39,7 +39,7 @@
   color: #fff;
   font-weight: 900;
   text-transform: uppercase;
-  background-color: #111;
+  background-color: rgb(25, 3, 27);
   border-radius: 2px;
   border: none;
   outline: none;
@@ -52,6 +52,11 @@
   background-color: #fff;
   color: rgb(241, 23, 23);
   text-shadow: 1px 1px 2px black;
+}
+
+.panel-left .restart {
+  font-size: 1.5rem;
+  width: 40%;
 }
 
 .panel-left p {
@@ -84,9 +89,16 @@ hr {
   height: 55px;
 }
 
+.panel-left .message {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .message img {
   width: 350px;
   height: 250px;
+  margin-bottom: 30px;
 }
 
 .panel-left .hidden {

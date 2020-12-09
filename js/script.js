@@ -133,7 +133,7 @@ window.onload = () => {
       }
     }
     top() {
-      return this.y + this.height / 4;
+      return this.y + this.height / 1.5;
     }
     bottom() {
       return this.y + this.height;
@@ -303,4 +303,10 @@ window.onload = () => {
       eater.moveRight();
     }
   });
+
+  const restartGame = document.querySelector('.restart');
+  function restart() {
+    location.reload();
+  }
+  restartGame.addEventListener('click', restart);
 };
