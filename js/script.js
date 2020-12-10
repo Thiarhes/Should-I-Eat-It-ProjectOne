@@ -2,7 +2,7 @@ const ctx = document.getElementById("canvas").getContext("2d");
 const backgroundImg = new Image();
 
 let bestScore;
-data = parseInt(localStorage.getItem(`${bestScore}`));
+data = parseInt(localStorage.getItem(`bestScore`));
 bestScore = isNaN(data)?0:data;
 
 backgroundImg.src = "../img/background.jpg";
@@ -92,8 +92,8 @@ window.onload = () => {
 
   function setBestScore() {
     if (myGameArea.points > bestScore) {
-      myGameArea.points = bestScore;
-      localStorage.setItem(`${bestScore}`, myGameArea.points);
+      bestScore = myGameArea.points;
+      localStorage.setItem(`bestScore`, myGameArea.points);
     }
   }
 
@@ -124,6 +124,9 @@ window.onload = () => {
 
     draw() {
       ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
+      // desenha a borda de colisão
+      //ctx.strokeStyle = 'red';
+      //ctx.strokeRect(this.left(), this.top(), this.right() - this.left(), this.bottom() - this.top());
     }
     moveLeft() {
       if (this.x > 1) {
@@ -139,13 +142,13 @@ window.onload = () => {
       return this.y + this.height / 4;
     }
     bottom() {
-      return this.y + this.height ;
+      return this.y + this.height - 40;
     }
     left() {
-      return this.x;
+      return this.x + 60;
     }
     right() {
-      return this.x + this.width;
+      return this.x + this.width - 60;
     }
     checkIfPick(food) {
       return !(
