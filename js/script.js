@@ -5,7 +5,7 @@ let bestScore;
 data = parseInt(localStorage.getItem(`bestScore`));
 bestScore = isNaN(data)?0:data;
 
-backgroundImg.src = "./img/background.jpg";
+backgroundImg.src = "img/background.jpg";
 
 window.onload = () => {
   document.querySelector(".start-button").onclick = () => {
