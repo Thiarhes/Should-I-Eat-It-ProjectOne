@@ -1,11 +1,10 @@
 const ctx = document.getElementById("canvas").getContext("2d");
 const backgroundImg = new Image();
+backgroundImg.src = "img/background.jpg";
 
 let bestScore;
 data = parseInt(localStorage.getItem(`bestScore`));
 bestScore = isNaN(data)?0:data;
-
-backgroundImg.src = "img/background.jpg";
 
 window.onload = () => {
   document.querySelector(".start-button").onclick = () => {
@@ -109,12 +108,12 @@ window.onload = () => {
       ctx.drawImage(this.img, this.x, this.y, 800, 650);
     }
   }
-  const background = new Background("../img/background.jpg");
+  const background = new Background("./img/background.jpg");
 
   class Eater {
     constructor(x, y) {
       this.img = new Image();
-      this.img.src = "../img/eater.png";
+      this.img.src = "./img/eater.png";
       this.x = x;
       this.y = y;
       this.speed = 0;
