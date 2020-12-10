@@ -1,9 +1,9 @@
 const effects = new Array();
-effects[0] = new Audio('../effects/goodfood.wav');
-effects[1] = new Audio('../effects/badfood.mp3');
-effects[2] = new Audio('../effects/fooddown.mp3');
-effects[3] = new Audio('../effects/gameover.mp3');
-effects[4] = new Audio('../effects/gamemusic.mp3');
+effects[0] = new Audio('./effects/goodfood.wav');
+effects[1] = new Audio('./effects/badfood.mp3');
+effects[2] = new Audio('./effects/fooddown.mp3');
+effects[3] = new Audio('./effects/gameover.mp3');
+effects[4] = new Audio('./effects/gamemusic.mp3');
 
 effects[4].volume = 0.3;
 effects[3].volume = 0.3;
