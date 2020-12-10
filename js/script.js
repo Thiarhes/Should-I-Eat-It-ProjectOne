@@ -1,6 +1,6 @@
 const ctx = document.getElementById("canvas").getContext("2d");
 const backgroundImg = new Image();
-backgroundImg.src = "img/background.jpg";
+backgroundImg.src = "./img/background.jpg";
 
 let bestScore;
 data = parseInt(localStorage.getItem(`bestScore`));
@@ -200,16 +200,16 @@ window.onload = () => {
 
     if (myGameArea.frames % myGameArea.creationTime === 0) {
       // seleção aleatoria do alimento
-      const airplane = "../img/airplane.png";
-      const banana = "../img/banana.png";
-      const fries = "../img/fries.png";
-      const ball = "../img/ball.png";
-      const cell = "../img/cell.png";
-      const tool = "../img/tool.png";
-      const watermelon = "../img/watermelon.png";
-      const pizza = "../img/pizza.png";
-      const juice = "../img/juice.png";
-      const sneakers = "../img/sneakers.png";
+      const airplane = "./img/airplane.png";
+      const banana = "./img/banana.png";
+      const fries = "./img/fries.png";
+      const ball = "./img/ball.png";
+      const cell = "./img/cell.png";
+      const tool = "./img/tool.png";
+      const watermelon = "./img/watermelon.png";
+      const pizza = "./img/pizza.png";
+      const juice = "./img/juice.png";
+      const sneakers = "./img/sneakers.png";
       const foods = [
         airplane,
         banana,
