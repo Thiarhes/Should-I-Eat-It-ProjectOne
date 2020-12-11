@@ -16,7 +16,7 @@ Should I Eat It is a easy game to play, where you need "to eat" good things and 
 
 ### Moves:
 
-You can control the "eater" to the left or to the right using the arrows keys from your keyboard.
+You can control the "eater" to the left or to the right using the arrow keys from your keyboard.
 
 ---
 
