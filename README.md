@@ -1,4 +1,4 @@
-# Should-I-Eat-It-ProjectOne
+# Should-I-Eat-It-ProjectOne-IronHack
 
 IronHack's first project!
 
@@ -6,8 +6,24 @@ IronHack's first project!
 
 ## Author Thiarhes
 
-![Let's play!](./img/newstart.png)
+---
+
+### About the game:
+
+Should I Eat It is a easy game to play, where you need "to eat" good things and avoid the bad ones!
 
 ---
 
-Click [aqui]() para jogar!
+### Moves:
+
+You can control the "eater" to the left or to the right using the arrows keys from your keyboard.
+
+---
+
+### Sounds:
+
+Free music and SFX from freesound.org
+
+---
+
+Click [here](https://thiarhes.github.io/Should-I-Eat-It-ProjectOne/) para jogar!
