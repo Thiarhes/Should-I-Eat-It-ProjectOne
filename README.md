@@ -26,4 +26,4 @@ Free music and SFX from freesound.org
 
 ---
 
-Click [here](https://thiarhes.github.io/Should-I-Eat-It-ProjectOne/) para jogar!
+Click [here](https://thiarhes.github.io/Should-I-Eat-It-ProjectOne/) to play!
