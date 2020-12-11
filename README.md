@@ -1,2 +1,2 @@
-# Should-I-Eat-It-ProjectOne
+# Should-I-Eat-It-ProjectOne-IronHack
 IronHack's first project!
