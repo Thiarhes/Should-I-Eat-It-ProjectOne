@@ -12,7 +12,7 @@ IronHack's first project!
 
 ### About the game:
 
-_SHOULD I EAT IT_ is a easy game to play, where you need "to eat" good things and avoid the bad ones!
+**SHOULD I EAT IT** is a easy game to play, where you need "to eat" good things and avoid the bad ones! Don't let good things hit the floor! :wink:
 
 ---
 
