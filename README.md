@@ -6,6 +6,8 @@ IronHack's first project!
 
 ## Author Thiarhes
 
+![](./img/delicious.png)
+
 ---
 
 ### About the game:
@@ -16,13 +18,13 @@ Should I Eat It is a easy game to play, where you need "to eat" good things and 
 
 ### Moves:
 
-You can control the "eater" to the left or to the right using the arrow keys from your keyboard.
+You can control the "eater" to the left or to the right using the arrow keys 🠄 🠆 from your keyboard.
 
 ---
 
 ### Sounds:
 
-Free music and SFX from freesound.org
+Free music and SFX from [freesound.org](https://freesound.org).
 
 ---
 
