@@ -29,3 +29,7 @@ Free music and SFX from [freesound.org](https://freesound.org).
 ---
 
 Click [here](https://thiarhes.github.io/Should-I-Eat-It-ProjectOne/) to play!
+
+---
+
+[Game's presentation slides](https://docs.google.com/presentation/d/1yrpORCp3M4tbJXfgM1S4C9fIjvStanlX2xclildRFJ8/edit#slide=id.gc6f73a04f_0_0)
