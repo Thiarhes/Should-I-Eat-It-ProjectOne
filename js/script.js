@@ -2,6 +2,7 @@ const ctx = document.getElementById("canvas").getContext("2d");
 const backgroundImg = new Image();
 backgroundImg.src = "./img/background.jpg";
 
+// Salvando o recorde no navegador
 let bestScore;
 data = parseInt(localStorage.getItem(`bestScore`));
 bestScore = isNaN(data)?0:data;
@@ -47,8 +48,10 @@ window.onload = () => {
       ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
     },
     fallDownFaster() {
+      // aumentando a velocidade de queda dos itens
       if (this.frames % 240 === 0) {
         this.speed += 1;
+      // diminuindo o tempo em que os itens são criados
         if (this.creationTime > 20) {
           this.creationTime -= 6;
         }
@@ -77,13 +80,13 @@ window.onload = () => {
     },
     gameOver: function () {
       ctx.font = "80px Verdana";
-      // Create gradient
+      // Cria gradiente
       const gradient = ctx.createLinearGradient(0, 0, this.canvas.width, 0);
       gradient.addColorStop("0.6", "magenta");
       gradient.addColorStop("0.2", "blue");
       gradient.addColorStop("0.7", "red");
       gradient.addColorStop("0.4", "black");
-      // Fill with gradient
+      // preenche com gradiente
       ctx.fillStyle = gradient;
       ctx.fillText("GAME OVER!", 160, 300);
     },
@@ -199,7 +202,7 @@ window.onload = () => {
     }
 
     if (myGameArea.frames % myGameArea.creationTime === 0) {
-      // seleção aleatoria do alimento
+      // seleção aleatoria do item
       const airplane = "./img/airplane.png";
       const banana = "./img/banana.png";
       const fries = "./img/fries.png";
@@ -245,6 +248,7 @@ window.onload = () => {
     }
   }
 
+  // função que checa se o item foi pego e adiciona pontos ou tira vida dependendo do item
   function checkIfPickItem() {
     for (let i = 0; i < myGameArea.items.length; i += 1) {
       if (eater.checkIfPick(myGameArea.items[i])) {
@@ -267,6 +271,7 @@ window.onload = () => {
     }
   }
 
+  // função que checa se o item bom caiu no chão
   function checkDownItems() {
     const canvasYLimit = myGameArea.canvas.height;
     for (let i = 0; i < myGameArea.items.length; i += 1) {
@@ -301,6 +306,7 @@ window.onload = () => {
     setBestScore();
   }
 
+  // evento que faz o botão principal sumir e aparecer outro botão etc
   document.querySelector(".start-button").addEventListener("click", () => {
     hiddenButton();
     showMessage();
@@ -314,6 +320,7 @@ window.onload = () => {
     }
   });
 
+  // variável que guarda o evento de recarregar a página ao clicar no botão restart
   const restartGame = document.querySelector('.restart');
   function restart() {
     location.reload();
