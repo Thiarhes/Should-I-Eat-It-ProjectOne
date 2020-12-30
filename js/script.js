@@ -263,7 +263,7 @@ window.onload = () => {
             effects[0].play();
           }
         } else {
-          myGameArea.lives -= 1;
+          myGameArea.lives --;
           effects[1].play();
         }
         myGameArea.items.splice(i, 1);
@@ -279,7 +279,7 @@ window.onload = () => {
         myGameArea.items[i].good &&
         myGameArea.items[i].bottom() > canvasYLimit
       ) {
-        myGameArea.lives -= 1;
+        myGameArea.lives --;
         effects[2].play();
         myGameArea.items.splice(i, 1);
       }
@@ -287,7 +287,7 @@ window.onload = () => {
   }
 
   function checkGameOver() {
-    if (myGameArea.lives <= 0) {
+    if (myGameArea.lives <= -1) {
       myGameArea.stop();
     }
   }
