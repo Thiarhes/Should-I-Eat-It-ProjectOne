@@ -21,15 +21,15 @@ window.onload = () => {
   function hiddenButton() {
     const magicButton = document.querySelector(".start-button");
     const instructions = document.querySelector(".instructions");
-    magicButton.classList.add("hidden");
-    instructions.classList.add("hidden");
+    magicButton.classList.toggle("hidden"); // toggle add a class if it doesn't have and remove if it has
+    instructions.classList.toggle("hidden");
   }
 // função que mostra uma "mensagem" imagem no lugar do botão e das instruções
   function showMessage() {
     const show = document.querySelector(".message");
     const hr = document.querySelector(".hr");
-    hr.classList.remove("hidden");
-    show.classList.remove("hidden");
+    hr.classList.toggle("hidden");
+    show.classList.toggle("hidden");
   }
 
   const myGameArea = {
@@ -287,7 +287,7 @@ window.onload = () => {
   }
 
   function checkGameOver() {
-    if (myGameArea.lives <= -1) {
+    if (myGameArea.lives < 0) {
       myGameArea.stop();
     }
   }
